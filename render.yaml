@@ -4,7 +4,9 @@ services:
     env: python
     plan: free # or 'starter', 'standard', etc.
     buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn app:app # 'app' = filename (app.py) and Flask variable name
+    startCommand: gunicorn app:app --workers=1 --threads=1
+
+    #startCommand: gunicorn app:app # 'app' = filename (app.py) and Flask variable name
     autoDeploy: true
     region: singapore # closest region to India
     envVars:
