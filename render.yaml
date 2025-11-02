@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: FATCharger-bookguide # any name you like
+    env: python
+    plan: free # or 'starter', 'standard', etc.
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app # 'app' = filename (app.py) and Flask variable name
+    autoDeploy: true
+    region: singapore # closest region to India
+    envVars:
+      - key: MONGO_URI
+        sync: false # you'll add it manually in the Render dashboard
